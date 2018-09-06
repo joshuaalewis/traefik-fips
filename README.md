@@ -4,6 +4,9 @@
 Træfik integrates with your existing infrastructure components ([Docker](https://www.docker.com/), [Swarm mode](https://docs.docker.com/engine/swarm/), [Kubernetes](https://kubernetes.io), [Marathon](https://mesosphere.github.io/marathon/), [Consul](https://www.consul.io/), [Etcd](https://coreos.com/etcd/), [Rancher](https://rancher.com), [Amazon ECS](https://aws.amazon.com/ecs), ...) and configures itself automatically and dynamically.
 Telling Træfik where your orchestrator is could be the _only_ configuration step you need to do.
 
+
+The Dockerfile builds the FIPS canister per the requirements in "OpenSSL FIPS 140-2 Security Policy Version 2.0.16." It also verifies the SHA256 hash and PGP signatures of the OpenSSL and FIPS Module source based on OpenSSL's best practices recommendations. Finally, it builds and runs a simple C test program to verify that toggling FIPS mode actually works. This test program is only used in the Docker image build process and does not appear in the final image.
+
 # Example usage
 
 Grab a [sample configuration file](https://raw.githubusercontent.com/containous/traefik/master/traefik.sample.toml) and rename it to `traefik.toml`. Enable `docker` provider and web UI:
