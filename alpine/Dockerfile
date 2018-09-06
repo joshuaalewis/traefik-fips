@@ -1,4 +1,4 @@
-FROM alpine:3.8
+FROM ninefx/alpine-fips
 RUN apk --no-cache add ca-certificates
 RUN set -ex; \
 	apkArch="$(apk --print-arch)"; \
